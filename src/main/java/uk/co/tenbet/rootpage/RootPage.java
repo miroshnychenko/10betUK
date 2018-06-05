@@ -8,7 +8,7 @@ import org.openqa.selenium.support.How;
 
 public class RootPage extends AbstractPage {
 
-    @FindBy(how = How.CLASS_NAME, using = "root-header")
+    @FindBy(how = How.CLASS_NAME, using = "root-logo")
     private WebElement logo;
 
     @FindBy(how = How.CLASS_NAME, using = "root-login-btn")
@@ -30,6 +30,10 @@ public class RootPage extends AbstractPage {
 
     public void clickJoinNowSportsButton() {
         joinNowSports.click();
+    }
+
+    public void clickOnLogo() {
+        logo.click();
     }
 
     public boolean verifyElementsPresent() {

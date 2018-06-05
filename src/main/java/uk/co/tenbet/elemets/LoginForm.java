@@ -1,12 +1,13 @@
-package uk.co.tenbet.sharedElemets;
+package uk.co.tenbet.elemets;
 
 import core.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 
-public class LoginForm extends AbstractPage{
+public class LoginForm extends AbstractPage {
 
     @FindBy(how = How.CSS, using = "input[data-uat=\"login-username-input\"]")
     WebElement loginInput;
@@ -34,5 +35,11 @@ public class LoginForm extends AbstractPage{
 
     public void clickLoginButton() {
         loginButton.click();
+    }
+
+    public void doLogin(String login, String password) {
+        typeLogin(login);
+        typePassword(password);
+        clickLoginButton();
     }
 }

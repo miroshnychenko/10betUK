@@ -1,12 +1,10 @@
 package uk.com.tenbet;
 
 import core.WebDriverTestBase;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import uk.co.tenbet.rootpage.RootPage;
-import uk.co.tenbet.sharedElemets.LoginForm;
+import uk.co.tenbet.TenBetUKSite;
 
 public class LoginFromRootPage extends WebDriverTestBase{
 
@@ -16,13 +14,12 @@ public class LoginFromRootPage extends WebDriverTestBase{
         String password = "qwe123";
 
         driver.get("https://www.10bet.co.uk/");
-        RootPage rootPage = PageFactory.initElements(driver, RootPage.class);
-        rootPage.clickLoginButton();
+        TenBetUKSite site = new TenBetUKSite(driver);
 
-        LoginForm loginForm = PageFactory.initElements(driver, LoginForm.class);
-        loginForm.typeLogin(login);
-        loginForm.typePassword(password);
-        loginForm.clickLoginButton();
+        site.rootPage().clickLoginButton();
+        site.loginForm().typeLogin(login);
+        site.loginForm().typePassword(password);
+        site.loginForm().clickLoginButton();
         wait.until(ExpectedConditions.urlContains("/sports/"));
         Assert.assertTrue(driver.getCurrentUrl().equals("https://www.10bet.co.uk/sports/"));
 
